@@ -1,3 +1,0 @@
-https://it.mathworks.com/help/uav/ref/uavscenario.html
-
-https://it.mathworks.com/help/ros/ug/set-up-and-connect-to-unity-game-engine.html
