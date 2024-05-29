@@ -24,7 +24,7 @@ obstacles = [0, 0, 10, 0.1;     %
              6, 4, 0.1, 3;];    % [x, y, larghezza, altezza]
 
 % Iinflation factor applied to the obstacles
-inflate = 0.3;
+inflate = 0.2;
 inflated_obstacles = zeros(size(obstacles));
 for i = 1:height(obstacles)
     inflated_obstacles(i, 1) = obstacles(i, 1) - inflate; % x iniziale spostato a sinistra

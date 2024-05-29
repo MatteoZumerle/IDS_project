@@ -1,4 +1,4 @@
-function obstacles_lidar = lidar_data_to_obstacles(lidar_data, epsilon, minPts)
+function obstacles_lidar = lidar_data_to_obstacles_old(lidar_data, epsilon, minPts)
     %DBSCAN per clusterizzare punti
     [idx, ~] = dbscan(lidar_data, epsilon, minPts);
     obstacles_lidar = [];

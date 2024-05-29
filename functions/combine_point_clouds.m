@@ -24,6 +24,7 @@ function [new_matrix1, new_matrix2] = combine_point_clouds(matrix1, matrix2)
     new_matrix1 = [unique_points_mat1_with_value; common_points_with_value; unique_points_mat2_with_value];
     new_matrix2 = [unique_points_mat2_with_value; common_points_with_value; unique_points_mat1_with_value];
     
+    % Calcolo degli angoli polari
     angles1 = atan2d(new_matrix1(:, 2), new_matrix1(:, 1));
     angles2 = atan2d(new_matrix2(:, 2), new_matrix2(:, 1));
     
@@ -34,12 +35,14 @@ function [new_matrix1, new_matrix2] = combine_point_clouds(matrix1, matrix2)
     [~, sortIdx1] = sort(angles1);
     [~, sortIdx2] = sort(angles2);
     
+    new_matrix1 = new_matrix1(sortIdx1, :);
+    new_matrix2 = new_matrix2(sortIdx2, :);
+    
     % Trovo l'indice del primo punto con angolo 0
-    idx_first_angle1 = find(angles1(sortIdx1) == 0, 1);
-    idx_first_angle2 = find(angles2(sortIdx2) == 0, 1);
+    idx_first_angle1 = find(new_matrix1(:, 3) == 1, 1);
+    idx_first_angle2 = find(new_matrix2(:, 3) == 1, 1);
     
     % Riordino i punti finali partendo dall'angolo 0
-    new_matrix1 = [new_matrix1(sortIdx1(idx_first_angle1:end), :); new_matrix1(sortIdx1(1:idx_first_angle1-1), :)];
-    new_matrix2 = [new_matrix2(sortIdx2(idx_first_angle2:end), :); new_matrix2(sortIdx2(1:idx_first_angle2-1), :)];
+    new_matrix1 = [new_matrix1(idx_first_angle1:end, :); new_matrix1(1:idx_first_angle1-1, :)];
+    new_matrix2 = [new_matrix2(idx_first_angle2:end, :); new_matrix2(1:idx_first_angle2-1, :)];
 end
-
