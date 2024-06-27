@@ -1,15 +1,9 @@
-function [distance,angle12,angle21] = antenna(abs_point1,abs_point2,scanning_lines)
+function [distance] = antenna(abs_point1,abs_point2)
+% Antenna function works emulating the estimation of the distance between
+% the 2 drones, permitting them to comunicate if below a given treeshold
 distance_vector = abs_point2 - abs_point1;
 
-% Calcolo della distanza euclidea tra i due punti
+% Eucledian distance between 2 pooints
 distance = norm(distance_vector);
-
-% Converti l'angolo in gradi
-angle21 = atand(abs(abs_point1(1,2)-abs_point2(1,2))/abs(abs_point1(1,1)-abs_point2(1,1)));
-angle12 = 360 - angle21;
-incremento = 360/scanning_lines;
-angle21 = round(angle21 / incremento) * incremento;
-angle12 = round(angle12 / incremento) * incremento;
-
 
 end

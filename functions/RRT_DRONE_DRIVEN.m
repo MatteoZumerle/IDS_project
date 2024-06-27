@@ -10,12 +10,17 @@ function [rrt_tree, parent_indices] = RRT_DRONE_DRIVEN(step_size,n_iterations, f
 
         % Calculate the com of the previous 2 point buffer to move in other
         % quadrants: find the coordinates relatively to the position
-        prev_point_rel = -prev_points(1, :);                       
-        prev_2_point_rel = prev_point_rel - prev_points(2, :);
-        prev_3_point_rel = prev_2_point_rel - prev_points(3, :);
 
-        x_com = (prev_point_rel(1, 1) + prev_2_point_rel(1, 1) + prev_3_point_rel(1, 1))/3;
-        y_com = (prev_point_rel(1, 2) + prev_2_point_rel(1, 2) + prev_3_point_rel(1, 2))/3;
+        rel_prev_pts = [];
+        [num_prev_points,~] =size(prev_points(:,1)); 
+        rel_prev_pts(1,:) = -prev_points(1, :);
+        
+        for j=2:num_prev_points
+            rel_prev_pts(j,:) = rel_prev_pts(j-1,:) - prev_points(j,:);                             
+        end
+        
+        x_com = mean(rel_prev_pts(:,1));
+        y_com = mean(rel_prev_pts(:,2));
         
         
         % If point is inside the obstacles, avoid
