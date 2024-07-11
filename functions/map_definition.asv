@@ -7,7 +7,7 @@ function [obstacles,inflated_obstacles] = map_definition()
 
 % Define the walls and obstacles in the map
 % Comment the unwanted map type
-%Map 1
+% Map 1
 obstacles = [0, 0, 10, 0.1;     %
              0, 0, 0.1, 10;     % these are the walls
              10, 0, 0.1, 10.1;  %
@@ -36,7 +36,32 @@ obstacles = [0, 0, 10, 0.1;     %
 %              6, 8.5, 3, 0.5;];    % [x, y, larghezza, altezza]
 % .......
 
-
+% Map 3 
+% Definizione degli ostacoli
+% obstacles = [0, 0, 10, 0.1;     % 
+%              0, 0, 0.1, 10;     % questi sono i muri
+%              10, 0, 0.1, 10.1;  %
+%              0, 10, 10, 0.1;    %
+%              2, 2, 6, 0.5;
+%              2, 5, 0.5, 2;
+%              7.5, 5, 0.5, 2;
+%              1, 8.5, 3, 0.5;
+%              6, 8.5, 3, 0.5;
+%              ];    % [x, y, larghezza, altezza]
+% 
+% % Aggiungi piccoli rettangoli per creare un cerchio
+% theta = linspace(0, 2*pi, 30);
+% r = 0.3; % raggio del cerchio
+% x_center = 5; % coordinata x del centro
+% y_center = 5; % coordinata y del centro
+% w = 0.1; % larghezza dei piccoli rettangoli
+% h = 0.1; % altezza dei piccoli rettangoli
+% 
+% for i = 1:length(theta)
+%     x = r * cos(theta(i)) + x_center;
+%     y = r * sin(theta(i)) + y_center;
+%     obstacles = [obstacles; x, y, w, h];
+% end
 
 % Iinflation factor applied to the obstacles
 inflate = 0.2;
