@@ -1,41 +1,64 @@
-function [obstacles,inflated_obstacles] = map_definition()
-%Define the map dimensions, walls and obstacles
-% Define max map dimensions
-%x_map_size = 10;
-%y_map_size = 10;
-
+function [obstacles,inflated_obstacles, x_map_size, y_map_size] = map_definition()
 
 % Define the walls and obstacles in the map
-% Comment the unwanted map type
-%Map 1
-obstacles = [0, 0, 10, 0.1;     %
-             0, 0, 0.1, 10;     % these are the walls
-             10, 0, 0.1, 10.1;  %
-             0, 10, 10, 0.1;    %
-             2.3, 1.5, 0.1, 3;
-             2.3, 4.5, 2, 0.1;
-             4.3, 4.5, 0.1, 1.7;
-             1.4, 6.2, 3, 0.1;
-             1.4, 6.3, 0.1, 2.4;
-             4, 1.5, 4.5, 0.1;
-             5.2, 3, 2.8, 0.1;
-             5, 8.5, 3, 0.1;
-             7.9, 4, 0.1, 4.5;
-             6, 4, 0.1, 3;];    % [x, y, larghezza, altezza]
 
-% Map 2 
-% obstacles = [0, 0, 10, 0.1;     %
-%              0, 0, 0.1, 10;     % these are the walls
-%              10, 0, 0.1, 10.1;  %
-%              0, 10, 10, 0.1;    %
-%              2, 2, 6, 0.5;
-%              2, 5, 0.5, 2;
-%              7.5, 5, 0.5, 2;
-%              5, 3.5, 0.5, 4;
-%              1, 8.5, 3, 0.5;
-%              6, 8.5, 3, 0.5;];    % [x, y, larghezza, altezza]
-% .......
-
+select_map = 1;
+switch select_map
+    case 1
+        %Map 1
+        % Define max map dimensions
+        x_map_size = 10;
+        y_map_size = 10;
+        obstacles = [0, 0, 10, 0.1;     %
+                     0, 0, 0.1, 10;     % these are the walls
+                     10, 0, 0.1, 10.1;  %
+                     0, 10, 10, 0.1;    %
+                     2.3, 1.5, 0.1, 3;
+                     2.3, 4.5, 2, 0.1;
+                     4.3, 4.5, 0.1, 1.7;
+                     1.4, 6.2, 3, 0.1;
+                     1.4, 6.3, 0.1, 2.4;
+                     4, 1.5, 4.5, 0.1;
+                     5.2, 3, 2.8, 0.1;
+                     5, 8.5, 3, 0.1;
+                     7.9, 4, 0.1, 4.5;
+                     6, 4, 0.1, 3;];    % [x, y, width, higth]
+    case 2
+        % Map 2
+        % Define max map dimensions
+        x_map_size = 20;
+        y_map_size = 10;
+        obstacles = [0, 0, 20, 0.1;     %
+                     0, 0, 0.1, 10;     % these are the walls
+                     20, 0, 0.1, 10.1;  %
+                     0, 10, 20, 0.1;    %
+                     4, 3, 10, 0.5;
+                     4, 2.5, 0.5, 4;
+                     12, 6, 2.5, 2.5;
+                     1.5, 1, 0.5, 2;
+                     1.5, 6.5, 0.5, 2;
+                     2, 1, 5, 0.1;
+                     12, 1, 5, 0.1;
+                     17, 1, 0.1, 5;];    % [x, y, width, higth]
+    case 3
+        % Map 3 
+        % Define max map dimensions
+        x_map_size = 10;
+        y_map_size = 10;
+        obstacles = [0, 0, 10, 0.1;     %
+                     0, 0, 0.1, 10;     % these are the walls
+                     10, 0, 0.1, 10.1;  %
+                     0, 10, 10, 0.1;    %
+                     2, 2, 6, 0.5;
+                     2, 5, 0.5, 2;
+                     7.5, 5, 0.5, 2;
+                     5, 3.5, 0.5, 4;
+                     1, 8.5, 3, 0.5;
+                     6, 8.5, 3, 0.5;];    % [x, y, width, higth]
+    case 4
+        % Write here your own map
+        % .......
+end
 
 
 % Iinflation factor applied to the obstacles
@@ -48,7 +71,7 @@ for i = 1:height(obstacles)
     inflated_obstacles(i, 4) = obstacles(i, 4) + 2*inflate; % altezza aumentata
 end
 
-% Map 2
+% Map 3
 % ...
 end
 
