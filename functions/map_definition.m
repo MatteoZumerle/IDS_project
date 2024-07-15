@@ -26,20 +26,20 @@ switch select_map
     case 2
         % Map 2
         % Define max map dimensions
-        x_map_size = 20;
+        x_map_size = 15;
         y_map_size = 10;
-        obstacles = [0, 0, 20, 0.1;     %
+         obstacles = [0, 0, 15, 0.1;     %
                      0, 0, 0.1, 10;     % these are the walls
-                     20, 0, 0.1, 10.1;  %
-                     0, 10, 20, 0.1;    %
+                     15, 0, 0.1, 10.1;  %
+                     0, 10, 15, 0.1;    %
                      4, 3, 10, 0.5;
                      4, 2.5, 0.5, 4;
-                     12, 6, 2.5, 2.5;
+                     10, 6, 2.5, 2.5;
                      1.5, 1, 0.5, 2;
                      1.5, 6.5, 0.5, 2;
                      2, 1, 5, 0.1;
-                     12, 1, 5, 0.1;
-                     17, 1, 0.1, 5;];    % [x, y, width, higth]
+                     8, 1, 5, 0.1;
+                     6, 5, 1, 3;];    % [x, y, width, higth]
     case 3
         % Map 3 
         % Define max map dimensions
