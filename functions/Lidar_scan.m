@@ -1,4 +1,4 @@
-function [obstacle_abs_coords,obstacle_abs_coords_clean, relative_point, distance] = Lidar_scan(obstacles, lidar_position, lidar_angles, max_range, lidar_dist_res)
+function [obstacle_abs_coords,obstacle_abs_coords_clean, relative_point, distance] = Lidar_scan(obstacles, lidar_position, lidar_angles, max_range, lidar_dist_res,measure_noise)
     obstacle_abs_coords = zeros(length(lidar_angles), 2); 
     relative_point = [];
     distance = [];
@@ -14,7 +14,7 @@ function [obstacle_abs_coords,obstacle_abs_coords_clean, relative_point, distanc
             if isInObstacle(scan_point, obstacles) == true && hitted == 0
                 hitted = 1;
                 hit_point = scan_point;
-                relative_point = [relative_point; range * ray_direction];
+                relative_point = [relative_point; range * ray_direction + measure_noise*[randn,randn]];
                 distance = [distance; range];
                 break;
             end
