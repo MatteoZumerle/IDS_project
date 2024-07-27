@@ -1,6 +1,6 @@
 # LiDflAIR: Intelligent Distributed System Project
 
- <img src="pictures/drone_logo.jpg" alt="Logo" width="245"/>  <img src="pictures/all.png" alt="Logo" width="260"/>  <img src="pictures/fitting.png" alt="Logo" width="380"/> 
+ <img src="pictures/drone_logo.jpg" alt="Logo" width="245"/>  <img src="pictures/all.png" alt="Logo" width="260"/>  <img src="pictures/fitting.png" alt="Logo" width="510"/> 
 
 
 
