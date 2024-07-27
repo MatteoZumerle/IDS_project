@@ -3,10 +3,10 @@ function [rrt_tree, parent_indices] = RRT_DRONE(step_size,n_iterations, fov_dron
     rrt_tree = [0 , 0]; % RRT starting point
     parent_indices = 0; % RRT parent index
 
-    inflated_obstacles_lidar = lidar_data_to_obstacles(lidar_data, inflate); % to see the inflated obstacles aroud the drone: taken from the lidar map
+    inflated_obstacles_lidar = lidar_data_to_obstacles(lidar_data, inflate); % In order to see the inflated obstacles aroud the drone: taken from the lidar map
     
     % RRT tree generation
-    for i = 2:n_iterations % from 2-> starting point at the moment is given
+    for i = 2:n_iterations % from 2-> starting point is given
         % If point is inside the obstacles, avoid
     
         flag1 = true;

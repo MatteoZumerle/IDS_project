@@ -3,7 +3,7 @@ function [rrt_tree, parent_indices,rho_home,inflated_obstacles_lidar] = RRT_DRON
     rrt_tree = [0 , 0]; % RRT starting point
     parent_indices = 0; % RRT parent index
 
-    inflated_obstacles_lidar = lidar_data_to_obstacles(lidar_data, inflate); % to see the inflated obstacles aroud the drone: taken from the lidar map
+    inflated_obstacles_lidar = lidar_data_to_obstacles(lidar_data, inflate); % In order to see the inflated obstacles aroud the drone: taken from the lidar map
     
     %Flag to interrupt the while iteration
     flag_home = 0;
@@ -50,10 +50,12 @@ function [rrt_tree, parent_indices,rho_home,inflated_obstacles_lidar] = RRT_DRON
         rrt_tree = [rrt_tree; new_point];       
         parent_indices = [parent_indices; nearest_idx];
 
+        %distance from rrt point generation and home position in relative
+        %reference frame
         rho = sqrt(sum((new_point - home_position_rel).^2, 2));
         
         %Check if Drone has reached home neighborhood
-        if rho <= home_threshold %0.7 meter
+        if rho <= home_threshold 
             flag_home = 1;
             rho_home = rho;
         end

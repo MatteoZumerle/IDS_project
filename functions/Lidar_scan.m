@@ -1,7 +1,10 @@
 function [obstacle_abs_coords,obstacle_abs_coords_clean, relative_point, distance] = Lidar_scan(obstacles, lidar_position, lidar_angles, max_range, lidar_dist_res,measure_noise)
+    
     obstacle_abs_coords = zeros(length(lidar_angles), 2); 
     relative_point = [];
     distance = [];
+    
+    %Scanning lines acquisition algorithm
     for angle_step = 1:length(lidar_angles)-1
         hitted = 0;
         angle = lidar_angles(angle_step);
@@ -21,7 +24,8 @@ function [obstacle_abs_coords,obstacle_abs_coords_clean, relative_point, distanc
         end
            
    % Save absolute obstacle coordinates for each ray
-    obstacle_abs_coords(angle_step, :) = hit_point;           
+    obstacle_abs_coords(angle_step, :) = hit_point; 
+    
     %remove zeros from previous matrix
     index = any(obstacle_abs_coords ~= 0, 2);
     obstacle_abs_coords_clean= obstacle_abs_coords(index, :);

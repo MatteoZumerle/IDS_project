@@ -1,11 +1,11 @@
 function sorted_matrix = sort_matrix_by_polar_angle(matrix)
-    % Calcola l'angolo polare in gradi di ciascun punto rispetto all'origine (0,0)
+    % Calculate the polar angle in degrees of each point relative to the origin (0.0)
     angles = atan2d(matrix(:, 2), matrix(:, 1));
     
-    % Aggiungi 360 agli angoli negativi in modo che tutti gli angoli siano positivi
+    % Adding 360 to the negative angles so that all angles become positive
     angles(angles < 0) = angles(angles < 0) + 360;
     
-    % Ordina le righe della matrice in base all'angolo polare
+    % Sorting the rows of the matrix by polar angle
     [~, sortIdx] = sort(angles);
     sorted_matrix = matrix(sortIdx, :);
 end

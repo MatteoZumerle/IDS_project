@@ -47,7 +47,6 @@ function DRIVING_RRT_PID(Drone, drone_name, SetUp, proximity_threshold)
         
         %  Check if a general intermediate checkpoint position of the RRT tree is reached 
         if norm(Drone.(drone_name).RRT.pos - Drone.(drone_name).RRT.final_pos) <= proximity_threshold && Drone.(drone_name).RRT.check_point_index < length(Drone.(drone_name).RRT.points)
-            % aggiungere punto check point approx
             Drone.(drone_name).RRT.check_point_index = Drone.(drone_name).RRT.check_point_index +1;
             Drone.(drone_name).RRT.final_pos = Drone.(drone_name).RRT.points(:,Drone.(drone_name).RRT.check_point_index); 
 
