@@ -1,6 +1,5 @@
 function new_map2 = fused_map(virtual_points, common_points, map2, drone_name)
 
-            %Finding indices for common points in both matrices
             for pointer=1:length(virtual_points)
                 for indice=1:size(common_points,1)
                     if common_points(indice,1) == pointer
@@ -11,7 +10,7 @@ function new_map2 = fused_map(virtual_points, common_points, map2, drone_name)
                     
             end
             
-            %Calculate the mean of common points and save them in map2
+            %punti in comune mediati, salvati in map2
             for pointer=1:length(map2)
                 for indice=1:size(common_points,1)
                     if common_points(indice,4) == pointer
@@ -22,9 +21,9 @@ function new_map2 = fused_map(virtual_points, common_points, map2, drone_name)
                     
             end
 
-            [new_virtual_points,new_map2] = combine_point_clouds(virtual_points,map2); %Mantaining characteristic points and common points from both matrices
+            [new_virtual_points,new_map2] = combine_point_clouds(virtual_points,map2); %mantengo punti caratteristici, punti in comune e punti caratteristici altra matrice
             
-            % Initialization and saving new meshed map in the scan_points field
+            % Initialization and saving new meshed map in the scan_points_field
             Drone.(drone_name).Lidar.scan_points = [0,0];
             Drone.(drone_name).Lidar.scan_points = new_map2;
 end
